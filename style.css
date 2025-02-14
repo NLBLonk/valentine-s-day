@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #ff88c5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+    overflow: hidden; /* Ngăn thanh cuộn xuất hiện khi các trái tim di chuyển */
+}
+
+.content {
+    text-align: center;
+    padding: 30px;
+    background: #ff4d94;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fadeIn 1s ease-out forwards;
+    z-index: 10; /* Đảm bảo nội dung hiển thị trên các trái tim */
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+
+p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Trái tim */
+.hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none; /* Ngăn trái tim cản trở thao tác nhấp chuột */
+}
+
+.heart {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background-color: #ff4d94;
+    transform: rotate(-45deg);
+    opacity: 0; /* Bắt đầu với trái tim ẩn */
+    animation: fallHeart 4s infinite ease-in, showHeart 0.5s forwards; 
+}
+
+.heart::before, .heart::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ff4d94;
+    position: absolute;
+}
+
+.heart::before {
+    left: 0;
+    top: -15px;
+}
+
+.heart::after {
+    left: 15px;
+    top: 0;
+}
+
+/* Mưa trái tim */
+@keyframes fallHeart {
+    0% {
+        transform: translateY(-100px) rotate(-45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(-45deg);
+        opacity: 0;
+    }
+}
+
+/* Hiển thị trái tim từ từ */
+@keyframes showHeart {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Vị trí ngẫu nhiên và thời gian rơi */
+.heart:nth-child(1) {
+    left: 5%;
+    animation-duration: 5s;
+    animation-delay: 0s;
+}
+
+.heart:nth-child(2) {
+    left: 15%;
+    animation-duration: 6s;
+    animation-delay: 1s;
+}
+
+.heart:nth-child(3) {
+    left: 25%;
+    animation-duration: 7s;
+    animation-delay: 2s;
+}
+
+.heart:nth-child(4) {
+    left: 35%;
+    animation-duration: 8s;
+    animation-delay: 3s;
+}
+
+.heart:nth-child(5) {
+    left: 45%;
+    animation-duration: 6s;
+    animation-delay: 4s;
+}
+
+.heart:nth-child(6) {
+    left: 55%;
+    animation-duration: 7s;
+    animation-delay: 5s;
+}
+
+.heart:nth-child(7) {
+    left: 65%;
+    animation-duration: 8s;
+    animation-delay: 6s;
+}
+
+.heart:nth-child(8) {
+    left: 75%;
+    animation-duration: 9s;
+    animation-delay: 7s;
+}
+
+.heart:nth-child(9) {
+    left: 85%;
+    animation-duration: 6s;
+    animation-delay: 8s;
+}
+
+.heart:nth-child(10) {
+    left: 95%;
+    animation-duration: 7s;
+    animation-delay: 9s;
+}
+
+
+/* Mèo cầm hoa và quà */
+.gift-container {
+    position: absolute;
+    bottom: -200px; 
+    right: -8%; 
+    animation: moveUp 2s ease-out forwards; 
+}
+
+.gift-image {
+    width: 600px;
+    height: auto;
+}
+
+/* Animation di chuyển mèo từ dưới lên */
+@keyframes moveUp {
+    0% {
+        bottom: -1000px; 
+    }
+    100% {
+        bottom: -10%; 
+    }
+}
+
+/* Hộp chocolate */
+.chocolate-box {
+    position: absolute;
+    left: -200px;
+    bottom: 5%; 
+    animation: moveFromLeft 2s ease-out forwards; 
+}
+
+.chocolate-image {
+    width: 320px;
+    height: auto;
+}
+
+/* Animation hộp chocolate */
+@keyframes moveFromLeft {
+    0% {
+        left: -200px; 
+    }
+    100% {
+        left: 10%; 
+    }
+}
